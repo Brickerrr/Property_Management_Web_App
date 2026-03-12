@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "ejs": "^5.0.1",
+    "express": "^5.2.1",
+    "mongodb": "^7.1.0",
+    "mongodb-legacy": "^6.1.3"
+  }
+}

@@ -1,0 +1,55 @@
+[{
+  "_id": "prop_001",
+  "name": "Maple Court Apartments",
+  "location": {
+    "address": "14 Maple Street",
+    "city": "Manchester",
+    "postcode": "M1 4AB",
+    "country": "UK"
+  },
+  "status": "All Clear"
+},
+{
+  "_id": "prop_002",
+  "name": "Riverside House",
+  "location": {
+    "address": "7 River Lane",
+    "city": "Leeds",
+    "postcode": "LS1 2PQ",
+    "country": "UK"
+  },
+  "status": "Reviewing"
+},
+{
+  "_id": "prop_003",
+  "name": "The Old Mill Flats",
+  "location": {
+    "address": "22 Mill Road",
+    "city": "Liverpool",
+    "postcode": "L3 8TN",
+    "country": "UK"
+  },
+  "status": "Critical"
+},
+{
+  "_id": "prop_004",
+  "name": "Birchwood Terrace",
+  "location": {
+    "address": "5 Birchwood Avenue",
+    "city": "Sheffield",
+    "postcode": "S2 6YR",
+    "country": "UK"
+  },
+  "status": "All Clear"
+},
+{
+  "_id": "prop_005",
+  "name": "Greenfield Court",
+  "location": {
+    "address": "31 Greenfield Road",
+    "city": "Birmingham",
+    "postcode": "B4 7DX",
+    "country": "UK"
+  },
+  "status": "All Clear"
+}]

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REManage — Compliance Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<script src="/scripts/dashboard.js" defer></script>
+</head>
+<body class="compliance-mode">
+
+  <nav class="topbar">
+    <div class="logo">RE<span>MANAGE</span></div>
+    <div class="topbar-right">
+      <div class="badge-alert">2 CRITICAL</div>
+      <div class="avatar">JH</div>
+    </div>
+  </nav>
+
+  <main class="layout compliance-view">
+    
+    <aside class="col-properties">
+      <div class="col-header">
+        <span class="col-title">// PROPERTIES</span>
+        <button class="col-action-btn">+ Add</button>
+      </div>
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search address or tenant...">
+      </div>
+      <div class="properties-list">
+        <div class="property-item active">
+          <div class="prop-address">Maple Court Apartments</div>
+          <div class="prop-meta">
+            <span class="prop-tenants">8 tenants</span>
+            <span class="prop-status status-ok">All Clear</span>
+          </div>
+        </div>
+        <div class="property-item">
+          <div class="prop-address">Riverside House</div>
+          <div class="prop-meta">
+            <span class="prop-tenants">0 tenants</span>
+            <span class="prop-status status-review">Reviewing</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="col-ai">
+      
+      <header class="ai-header2">
+        <div class="header-left">
+          <a href="/" class="back-nav">← BACK TO DASHBOARD</a>
+          <div class="ai-title-group">
+            <div class="ai-orb"></div>
+            <div>
+              <div class="ai-label">COMPLIANCE ENGINE</div>
+              <div class="ai-sublabel">2026 Regulatory Standards Active</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <div class="status-tab risk-critical active" data-risk="critical">CRITICAL</div>
+          <div class="status-tab risk-warning" data-risk="warning">WARNING</div>
+          <div class="status-tab risk-secure" data-risk="secure">VALID</div>
+        </div>
+
+        <div class="header-right"></div>
+      </header>
+
+      <div class="ai-content comp-grid">
+        
+        <article class="comp-card risk-critical">
+          <div class="comp-header">
+            <span class="comp-label">Gas Safety (CP12)</span>
+            <span class="comp-status-badge">EXPIRED</span>
+          </div>
+          <div class="comp-value">12 Jan 2026</div>
+          <p class="comp-meta">Action Required: Immediate engineer call-out</p>
+        </article>
+
+        <article class="comp-card risk-critical">
+          <div class="comp-header">
+            <span class="comp-label">Legionella RA</span>
+            <span class="comp-status-badge">IMMINENT</span>
+          </div>
+          <div class="comp-value">18 Mar 2026</div>
+          <p class="comp-meta">Due in 6 days (2-year cycle)</p>
+        </article>
+
+        <article class="comp-card risk-warning">
+          <div class="comp-header">
+            <span class="comp-label">PAT Testing</span>
+            <span class="comp-status-badge">DUE SOON</span>
+          </div>
+          <div class="comp-value">04 Apr 2026</div>
+          <p class="comp-meta">Risk: High (6-month interval)</p>
+        </article>
+
+        <article class="comp-card risk-secure">
+          <div class="comp-header">
+            <span class="comp-label">EPC Rating</span>
+            <span class="comp-status-badge">VALID</span>
+          </div>
+          <div class="comp-value">22 Nov 2034</div>
+          <p class="comp-meta">Rating: B (10-year cycle)</p>
+        </article>
+
+        <article class="comp-card risk-secure">
+          <div class="comp-header">
+            <span class="comp-label">EICR</span>
+            <span class="comp-status-badge">VALID</span>
+          </div>
+          <div class="comp-value">15 Oct 2030</div>
+          <p class="comp-meta">Satisfactory (5-year cycle)</p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

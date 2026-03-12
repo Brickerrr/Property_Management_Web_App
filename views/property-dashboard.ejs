@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REManage — Property Management</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href ="/styles/main.css">
+<script src ="/scripts/dashboard.js" defer></script>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">RE<span>MANAGE</span></div>
+  <div class="topbar-right">
+    <span class="badge-alert">2 CRITICAL</span>
+    <div style="font-family:'DM Mono',monospace;font-size:0.72rem;color:#6b7280;">James Hargrove</div>
+    <div class="avatar">JH</div>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="layout">
+
+  <!-- ===== COL 1: PROPERTIES & TENANTS ===== -->
+  <div class="col-properties">
+    <div class="col-header">
+      <span class="col-title">// Properties</span>
+      <button class="col-action-btn">+ Add</button>
+    </div>
+    <div class="search-box">
+      <input class="search-input" type="text" placeholder="Search address or tenant...">
+    </div>
+    <div class="properties-list">
+    <% properties.forEach(function(property) { %>
+      <div class="property-item" data-id="<%= property._id %>" onclick="selectProperty(this)">
+        <div class="prop-address"><%= property.name %></div>
+        <div class="prop-meta">
+          <% const count = tenants.filter(t => t.resident_of === property._id).length %>
+          <span class="prop-tenants"><%= count %> tenants</span>
+          <span class="prop-status status-<%= property.status === 'Reviewing' ? 'review' : property.status === 'All Clear' ? 'ok' : 'issue' %>">
+            <%= property.status %>
+          </span>
+        </div>
+      </div>
+  <% }) %>
+  </div>
+
+    <!-- Selected Property Detail -->
+    <div class="property-detail">
+      <% properties.forEach(function(property) { %>
+        <div class="property-group" data-id="<%= property._id %>">
+          <div class="detail-label">// <%= property.name %></div>
+          <div class="tenants-section">
+            <% tenants.filter(t => t.resident_of === property._id).forEach(function(tenant) { %>
+              <div class="tenant-row">
+                <div>
+                  <div class="tenant-name"><%= tenant.name %></div>
+                  <div class="tenant-unit">Unit <%= tenant.unit %></div>
+                </div>
+              <div class="tenant-rent"><%= tenant.rent %>/mo</div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+      <div style="margin-top:14px;">
+        <div class="detail-label">// Documents</div>
+        <div class="docs-grid">
+          <div class="doc-chip"><span class="doc-icon">📄</span> Tenancy Agmt.</div>
+          <div class="doc-chip"><span class="doc-icon">🔐</span> EICR Cert.</div>
+          <div class="doc-chip"><span class="doc-icon">🔥</span> Gas Safety</div>
+          <div class="doc-chip"><span class="doc-icon">🏠</span> EPC Rating</div>
+        </div>
+      </div>
+  </div>
+  
+
+  <!-- ===== COL 2: AI INSIGHTS ===== -->
+  <div class="col-ai">
+    <div class="ai-header">
+      <div class="ai-title-group">
+        <div class="ai-orb"></div>
+        <div>
+          <div class="ai-label">REManage AI</div>
+          <div class="ai-sublabel">Analysing 6 properties</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights-tabs">
+      <div class="insight-tab active">Overview</div>
+     
+      <div class="insight-tab">Heating</div>
+      <div class="insight-tab">Electric</div>
+      <div class="insight-tab">Maintenance</div>
+      <div class="insight-tab">Pricing</div>
+      
+      <div class="insight-tab2 active">
+    <a href="/compliance" style="color: inherit; text-decoration: none;">Compliance</a>
+    </div>
+    </div>
+
+    <div class="ai-content">
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card heating">
+          <div class="stat-icon">🔥</div>
+          <div class="stat-value">£382</div>
+          <div class="stat-label">Avg. Heating / mo</div>
+          <div class="stat-change up">↑ 12% vs last month</div>
+        </div>
+        <div class="stat-card electric">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-value">£241</div>
+          <div class="stat-label">Avg. Electric / mo</div>
+          <div class="stat-change down">↓ 4% vs last month</div>
+        </div>
+        <div class="stat-card maintenance">
+          <div class="stat-icon">🔧</div>
+          <div class="stat-value">8</div>
+          <div class="stat-label">Repairs YTD</div>
+          <div class="stat-change up">↑ 3 from Q3</div>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="chart-section">
+        <div class="chart-title">
+          <span>Monthly Cost Breakdown — All Properties</span>
+          <span class="chart-period">6 months ▾</span>
+        </div>
+        <div class="bar-chart">
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-heating" style="height:55%"></div></div>
+            <div class="bar-label">Aug</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-heating" style="height:60%"></div></div>
+            <div class="bar-label">Sep</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-heating" style="height:72%"></div></div>
+            <div class="bar-label">Oct</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-heating" style="height:85%"></div></div>
+            <div class="bar-label">Nov</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-electric" style="height:65%"></div></div>
+            <div class="bar-label">Dec</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-wrap"><div class="bar-fill bar-maint" style="height:40%"></div></div>
+            <div class="bar-label">Jan</div>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#f06565"></div>Heating</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Electric</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--accent2)"></div>Maintenance</div>
+        </div>
+      </div>
+
+      <!-- AI Insight Messages -->
+      <div class="insight-messages">
+        <div class="insight-msg">
+          <div class="msg-icon warn">⚠️</div>
+          <div class="msg-body">
+            <div class="msg-title">Heating spike at 14 Ashbrook Lane</div>
+            <div class="msg-text">Gas consumption increased 28% in November. Pattern suggests boiler inefficiency — last serviced 19 months ago. Recommend inspection before peak winter.</div>
+            <span class="msg-tag">14 Ashbrook Lane</span>
+          </div>
+        </div>
+        <div class="insight-msg">
+          <div class="msg-icon info">📈</div>
+          <div class="msg-body">
+            <div class="msg-title">Area rental prices up 7.4% YoY</div>
+            <div class="msg-text">Similar 2-bed properties in the Mercer Road postcode are now averaging £1,180/mo. Your current listing at £950 is below market — potential £230/mo uplift on renewal.</div>
+            <span class="msg-tag">27 Mercer Rd</span>
+          </div>
+        </div>
+        <div class="insight-msg">
+          <div class="msg-icon tip">💡</div>
+          <div class="msg-body">
+            <div class="msg-title">Breakage pattern detected — Oakfield Ct.</div>
+            <div class="msg-text">3 plumbing-related incidents across Oakfield Court in the past 8 months. AI flags likely pipe deterioration. Proactive replumbing could prevent higher repair costs.</div>
+            <span class="msg-tag">Oakfield Court</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Chat Input -->
+    <div class="ai-input-area">
+      <input class="ai-input" type="text" placeholder="Ask about your properties, costs, or trends...">
+      <button class="ai-send-btn">→</button>
+    </div>
+  </div>
+
+  <!-- ===== COL 3: INCIDENTS ===== -->
+  <div class="col-incidents">
+    <div class="col-header">
+      <span class="col-title">// Reported Incidents</span>
+      <button class="col-action-btn" style="background:var(--red);color:white;">● Live</button>
+    </div>
+
+    <div class="incidents-list">
+
+      <!-- Critical incident -->
+      <div class="incident-card critical">
+        <div class="incident-top">
+          <div class="incident-title">Boiler failure — no hot water</div>
+          <span class="severity-badge sev-critical">Critical</span>
+        </div>
+        <div class="incident-addr">14 Ashbrook Lane, Unit A · Reported by Sarah Mitchell</div>
+        <div class="incident-desc">No heating or hot water since Thursday evening. Tenant has two young children in property.</div>
+        <div class="contractor-alert">
+          <div class="contractor-avatar">RH</div>
+          <div class="contractor-info">
+            <div class="contractor-name">Rob Hughes Plumbing</div>
+            <div class="contractor-trade">Gas Safe · Plumbing & Heating</div>
+          </div>
+          <div class="contractor-status">
+            <div class="dot responding"></div>
+            <span style="color:var(--accent2)">En route</span>
+          </div>
+        </div>
+        <div class="incident-time">🕐 Reported 2h ago</div>
+      </div>
+
+      <!-- Moderate incident -->
+      <div class="incident-card critical">
+        <div class="incident-top">
+          <div class="incident-title">Electrical fault — kitchen sockets</div>
+          <span class="severity-badge sev-critical">Critical</span>
+        </div>
+        <div class="incident-addr">8 Greenfield Terrace, Unit 2 · Reported by Amy Cole</div>
+        <div class="incident-desc">Multiple kitchen sockets not working after tripping circuit breaker. Tenant unable to use appliances.</div>
+        <div class="contractor-alert">
+          <div class="contractor-avatar">DE</div>
+          <div class="contractor-info">
+            <div class="contractor-name">D. Evans Electrical</div>
+            <div class="contractor-trade">NICEIC Certified · Electrician</div>
+          </div>
+          <div class="contractor-status">
+            <div class="dot dispatched"></div>
+            <span style="color:var(--accent)">Dispatched</span>
+          </div>
+        </div>
+        <div class="incident-time">🕐 Reported 4h ago</div>
+      </div>
+
+      <!-- Low incident -->
+      <div class="incident-card moderate">
+        <div class="incident-top">
+          <div class="incident-title">Leaking tap — bathroom</div>
+          <span class="severity-badge sev-moderate">Moderate</span>
+        </div>
+        <div class="incident-addr">Oakfield Court, Unit 4 · Reported by James Prior</div>
+        <div class="incident-desc">Hot tap in main bathroom dripping constantly. Tenant reports it has been worsening over two weeks.</div>
+        <div class="contractor-alert">
+          <div class="contractor-avatar">CW</div>
+          <div class="contractor-info">
+            <div class="contractor-name">City Wide Plumbers</div>
+            <div class="contractor-trade">Plumbing · General Maintenance</div>
+          </div>
+          <div class="contractor-status">
+            <div class="dot scheduled"></div>
+            <span style="color:var(--muted)">Scheduled</span>
+          </div>
+        </div>
+        <div class="incident-time">🕐 Reported 1 day ago</div>
+      </div>
+
+      <!-- Low incident -->
+      <div class="incident-card low">
+        <div class="incident-top">
+          <div class="incident-title">Broken window latch — bedroom</div>
+          <span class="severity-badge sev-low">Low</span>
+        </div>
+        <div class="incident-addr">55 Kensington Place · Reported by Felix Grant</div>
+        <div class="incident-desc">Window latch on second bedroom broken. Currently securing with tape but tenant concerned about security.</div>
+        <div class="contractor-alert">
+          <div class="contractor-avatar">MJ</div>
+          <div class="contractor-info">
+            <div class="contractor-name">Metro Joinery & Glazing</div>
+            <div class="contractor-trade">Carpentry · Window Repairs</div>
+          </div>
+          <div class="contractor-status">
+            <div class="dot scheduled"></div>
+            <span style="color:var(--muted)">Fri 9am</span>
+          </div>
+        </div>
+        <div class="incident-time">🕐 Reported 2 days ago</div>
+      </div>
+    </div>
+
+    <!-- Incidents summary -->
+    <div class="incidents-summary">
+      <div class="summary-item">
+        <div class="summary-count red">2</div>
+        <div class="summary-label">Critical</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-count yellow">1</div>
+        <div class="summary-label">Moderate</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-count green">1</div>
+        <div class="summary-label">Low</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

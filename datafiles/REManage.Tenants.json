@@ -1,0 +1,56 @@
+[{
+  "_id": "ten_001",
+  "name": "James Hartley",
+  "resident_of": "prop_001",
+  "rent": "£1,250",
+  "unit": "1"
+},
+{
+  "_id": "ten_002",
+  "name": "Sophie Brennan",
+  "resident_of": "prop_001",
+  "rent": "£1,100",
+  "unit": "2"
+},
+{
+  "_id": "ten_003",
+  "name": "Marcus Webb",
+  "resident_of": "prop_002",
+  "rent": "£1,450",
+  "unit": "3"
+},
+{
+  "_id": "ten_004",
+  "name": "Priya Nair",
+  "resident_of": "prop_003",
+  "rent": "£950",
+  "unit": "1"
+},
+{
+  "_id": "ten_005",
+  "name": "Daniel Okafor",
+  "resident_of": "prop_003",
+  "rent": "£1,050",
+  "unit": "2"
+},
+{
+  "_id": "ten_006",
+  "name": "Claire Hutchinson",
+  "resident_of": "prop_004",
+  "rent": "£1,700",
+  "unit": "1"
+},
+{
+  "_id": "ten_007",
+  "name": "Tom Gallagher",
+  "resident_of": "prop_005",
+  "rent": "£1,325",
+  "unit": "2"
+},
+{
+  "_id": "ten_008",
+  "name": "Aisha Yusuf",
+  "resident_of": "prop_005",
+  "rent": "£875",
+  "unit": "4"
+}]
