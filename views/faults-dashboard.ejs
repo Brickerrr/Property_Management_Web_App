@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REManage — Compliance Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/main.css">
+<script src="/scripts/dashboard.js" defer></script>
+</head>
+<body class="compliance-mode">
+
+  <nav class="topbar">
+    <div class="logo">RE<span>MANAGE</span></div>
+    <div class="topbar-right">
+      <div class="badge-alert">2 CRITICAL</div>
+      <div class="avatar">JH</div>
+    </div>
+  </nav>
+
+  <main class="layout compliance-view">
+    
+    <aside class="col-properties">
+      <div class="col-header">
+        <span class="col-title">// PROPERTIES</span>
+        <button class="col-action-btn">+ Add</button>
+      </div>
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search address or tenant...">
+      </div>
+      <div class="properties-list">
+        <div class="property-item active">
+          <div class="prop-address">Maple Court Apartments</div>
+          <div class="prop-meta">
+            <span class="prop-tenants">8 tenants</span>
+            <span class="prop-status status-ok">All Clear</span>
+          </div>
+        </div>
+        <div class="property-item">
+          <div class="prop-address">Riverside House</div>
+          <div class="prop-meta">
+            <span class="prop-tenants">0 tenants</span>
+            <span class="prop-status status-review">Reviewing</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="col-ai">
+      
+      <header class="ai-header2">
+        <div class="header-left">
+          <a href="/" class="back-nav">← BACK TO DASHBOARD</a>
+          <div class="ai-title-group">
+            <div class="ai-orb"></div>
+            <div>
+              <div class="ai-label">Faults ENGINE</div>
+              <div class="ai-sublabel">2026 Faults</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="header-center">
+          <div class="status-tab risk-critical active" data-risk="critical">CRITICAL</div>
+          <div class="status-tab risk-warning" data-risk="warning">WARNING</div>
+          <div class="status-tab risk-secure" data-risk="secure">CLEAR</div>
+        </div>
+
+        <div class="header-right"></div>
+      </header>
+
+      <div class="ai-content comp-grid">
+        
+        <article class="comp-card risk-critical">
+          <div class="comp-header">
+            <span class="comp-label">Fault ID: 1</span>
+            <span class="comp-status-badge">CRITICAL</span>
+          </div>
+          <div class="comp-value">FAULT: Heating failure<br>Date reported: 12 Jan 2026<br>Address: 123 Main St</div>
+          <p class="comp-meta">Action Required: Immediate engineer call-out</p>
+        </article>
+
+        <article class="comp-card risk-critical">
+          <div class="comp-header">
+            <span class="comp-label">Fault ID: 2</span>
+            <span class="comp-status-badge">CRITICAL</span>
+          </div>
+          <div class="comp-value">FAULT: Electrical issue<br>Date reported: 19 Jan 2026<br>Address: 456 Oak Ave</div>
+          <p class="comp-meta">Action Required: Call electrician out</p>
+        </article>
+
+        <article class="comp-card risk-warning">
+          <div class="comp-header">
+            <span class="comp-label">Fault ID: 3</span>
+            <span class="comp-status-badge">NON-CRITICAL</span>
+          </div>
+          <div class="comp-value">FAULT: Faulty lighting<br>Date reported: 18 Jan 2026<br>Address: 789 Pine Rd</div>
+          <p class="comp-meta">Action Required: Call electrician out</p>
+        </article>
+
+        <article class="comp-card risk-secure">
+          <div class="comp-header">
+            <span class="comp-label">Fault ID: 4</span>
+            <span class="comp-status-badge">LOW</span>
+          </div>
+          <div class="comp-value">FAULT: Microwave died<br>Date reported: 25 Dec 2025<br>Address: 101 Elm St</div>
+          <p class="comp-meta">Action Required: Replace microwave</p>
+        </article>
+
+        <article class="comp-card risk-secure">
+          <div class="comp-header">
+            <span class="comp-label">Fault ID: 5</span>
+            <span class="comp-status-badge">LOW</span>
+          </div>
+          <div class="comp-value">FAULT: Creaking floor<br>Date reported: 20 Dec 2025<br>Address: 202 Maple Dr</div>
+          <p class="comp-meta">Action Required: Call maintenance to inspect</p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

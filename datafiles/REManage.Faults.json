@@ -1,0 +1,40 @@
+[{
+  "_id": "fault_1",
+  "fault": "Heating failure",
+  "location": "prop_001",
+  "resident_id": "ten_01",
+  "date": "12 Jan 2026",
+  "fault_level": "CRITICAL"
+},
+{
+  "_id": "fault_2",
+  "fault": "Electrical issue",
+  "location": "prop_002",
+  "resident_id": "ten_02",
+  "date": "19 Jan 2026",
+  "fault_level": "CRITICAL"
+},
+{
+  "_id": "fault_3",
+  "fault": "Faulty lightin",
+  "location": "prop_003",
+  "resident_id": "ten_03",
+  "date": "18 Jan 2026",
+  "fault_level": "NON-CRITICAL"
+},
+{
+  "_id": "fault_4",
+  "fault": "Microwave died",
+  "location": "prop_004",
+  "resident_id": "ten_04",
+  "date": "25 Dec 2025",
+  "fault_level": "LOW"
+},
+{
+  "_id": "fault_5",
+  "fault": "Creaking floor",
+  "location": "prop_005",
+  "resident_id": "ten_05",
+  "date": "20 Dec 2025",
+  "fault_level": "LOW"
+}]

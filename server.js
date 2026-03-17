@@ -42,3 +42,15 @@ app.get('/compliance', async function(req, res){
         tenants: tenants
     });
 });
+
+app.get('/faults', async function(req, res){
+ 
+        const [properties, tenants] = await Promise.all([
+        db.collection('Properties').find({}).toArray(),
+        db.collection('Tenants').find({}).toArray()
+    ]);
+    res.render('faults-dashboard', {
+        properties: properties,
+        tenants: tenants
+    });
+});
