@@ -1,124 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REManage — Compliance Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles/main.css">
-<script src="/scripts/dashboard.js" defer></script>
+    <meta charset="UTF-8">
+    <title>REManage — Compliance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+   
 </head>
 <body class="compliance-mode">
-
-  <nav class="topbar">
+<nav class="topbar">
     <div class="logo">RE<span>MANAGE</span></div>
     <div class="topbar-right">
-      <div class="badge-alert">2 CRITICAL</div>
-      <div class="avatar">JH</div>
+        <div class="badge-alert">SYSTEM ACTIVE</div>
+        <div class="avatar">JH</div>
     </div>
-  </nav>
+</nav>
 
-  <main class="layout compliance-view">
-    
+<main class="layout compliance-view">
     <aside class="col-properties">
-      <div class="col-header">
-        <span class="col-title">// PROPERTIES</span>
-        <button class="col-action-btn">+ Add</button>
-      </div>
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="Search address or tenant...">
-      </div>
-      <div class="properties-list">
-        <div class="property-item active">
-          <div class="prop-address">Maple Court Apartments</div>
-          <div class="prop-meta">
-            <span class="prop-tenants">8 tenants</span>
-            <span class="prop-status status-ok">All Clear</span>
-          </div>
+        <div class="col-header">
+            <span class="col-title">// PROPERTIES_INDEX</span>
         </div>
-        <div class="property-item">
-          <div class="prop-address">Riverside House</div>
-          <div class="prop-meta">
-            <span class="prop-tenants">0 tenants</span>
-            <span class="prop-status status-review">Reviewing</span>
-          </div>
+        <div class="search-box">
+            <input type="text" id="propSearch" class="search-input" placeholder="Search by address...">
         </div>
-      </div>
+        <div class="properties-list">
+            <% if (properties && properties.length > 0) { %>
+                <% properties.forEach(property => { %>
+                    <% 
+                        const rec = property.compliance_records[0]; 
+                        const status = rec ? rec.status : 'N/A';
+                    %>
+                    <div class="property-item <%= String(selectedProperty) === String(property.property_id) ? 'active' : '' %>" 
+                         onclick="navigateToProperty('<%= property.property_id %>')"
+                         data-name="<%= property.name %>">
+                        <div class="prop-address"><%= property.name %></div>
+                      
+                    <div class="prop-meta">
+                        <span class="prop-status <%= status === 'CRITICAL' ? 'status-critical' : status === 'WARNING' ? 'status-warning' : 'status-valid' %>">
+                            <%= status %>
+                        </span>
+                        <small style="opacity:0.4; font-family: 'DM Mono';"><%= property.property_id %></small>
+                    </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <div class="empty-state">NO_PROPERTIES_FOUND</div>
+            <% } %>
+        </div>
     </aside>
 
     <section class="col-ai">
-      
-      <header class="ai-header2">
-        <div class="header-left">
-          <a href="/" class="back-nav">← BACK TO DASHBOARD</a>
-          <div class="ai-title-group">
-            <div class="ai-orb"></div>
-            <div>
-              <div class="ai-label">COMPLIANCE ENGINE</div>
-              <div class="ai-sublabel">2026 Regulatory Standards Active</div>
+        <header class="ai-header2">
+            <div class="header-left">
+                <a href="/" class="back-nav">← DISPATCH_CENTER</a>
+                <div class="ai-title-group">
+                    <div class="ai-orb"></div>
+                    <div>
+                        <div class="ai-label">AUDIT_LOG_V2.0</div>
+                        <div class="ai-sublabel">
+                            <%= selectedPropertyData ? selectedPropertyData.name : 'AWAITING_SELECTION...' %>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+            
+            <div class="header-center">
+                <div class="status-tab active" data-filter="ALL">ALL</div>
+                <div class="status-tab" data-filter="CRITICAL">CRITICAL</div>
+                <div class="status-tab" data-filter="WARNING">WARNING</div>
+                <div class="status-tab" data-filter="VALID">VALID</div>
+            </div>
+        </header>
+
+        <div class="ai-content comp-grid">
+            <% if (selectedPropertyData && selectedPropertyData.compliance_records && selectedPropertyData.compliance_records.length > 0) { %>
+                <% selectedPropertyData.compliance_records.forEach(item => { %>
+                   <article class="comp-card <%= item.status === 'CRITICAL' ? 'risk-critical' : item.status === 'WARNING' ? 'risk-warning' : 'risk-secure' %>" data-status="<%= item.status %>">
+                    <div class="comp-header">
+                        <span class="comp-label"><%= item.type %></span>
+                        <span class="comp-status-badge"><%= item.status %></span>
+                    </div>
+                    <div class="comp-value">EXPIRY: <%= item.expiry_date %></div>
+                    <p class="comp-meta"><%= item.notes || 'No log entry provided.' %></p>
+                    <div class="comp-footer" style="font-size:10px; opacity:0.3; margin-top:15px; font-family: 'DM Mono';">
+                        CID: <%= item.compliance_id %> | ISSUE: <%= item.issue_date %>
+                    </div>
+                </article>
+                <% }) %>
+            <% } else { %>
+                <div class="empty-state">
+                    <div class="empty-icon">⚠️</div>
+                    <p>// NO_COMPLIANCE_DATA_FOUND</p>
+                    <% if (!selectedProperty) { %>
+                        <small>Please select a property from the index to view audit records.</small>
+                    <% } %>
+                </div>
+            <% } %>
         </div>
-
-        <div class="header-center">
-          <div class="status-tab risk-critical active" data-risk="critical">CRITICAL</div>
-          <div class="status-tab risk-warning" data-risk="warning">WARNING</div>
-          <div class="status-tab risk-secure" data-risk="secure">VALID</div>
-        </div>
-
-        <div class="header-right"></div>
-      </header>
-
-      <div class="ai-content comp-grid">
-        
-        <article class="comp-card risk-critical">
-          <div class="comp-header">
-            <span class="comp-label">Gas Safety (CP12)</span>
-            <span class="comp-status-badge">EXPIRED</span>
-          </div>
-          <div class="comp-value">12 Jan 2026</div>
-          <p class="comp-meta">Action Required: Immediate engineer call-out</p>
-        </article>
-
-        <article class="comp-card risk-critical">
-          <div class="comp-header">
-            <span class="comp-label">Legionella RA</span>
-            <span class="comp-status-badge">IMMINENT</span>
-          </div>
-          <div class="comp-value">18 Mar 2026</div>
-          <p class="comp-meta">Due in 6 days (2-year cycle)</p>
-        </article>
-
-        <article class="comp-card risk-warning">
-          <div class="comp-header">
-            <span class="comp-label">PAT Testing</span>
-            <span class="comp-status-badge">DUE SOON</span>
-          </div>
-          <div class="comp-value">04 Apr 2026</div>
-          <p class="comp-meta">Risk: High (6-month interval)</p>
-        </article>
-
-        <article class="comp-card risk-secure">
-          <div class="comp-header">
-            <span class="comp-label">EPC Rating</span>
-            <span class="comp-status-badge">VALID</span>
-          </div>
-          <div class="comp-value">22 Nov 2034</div>
-          <p class="comp-meta">Rating: B (10-year cycle)</p>
-        </article>
-
-        <article class="comp-card risk-secure">
-          <div class="comp-header">
-            <span class="comp-label">EICR</span>
-            <span class="comp-status-badge">VALID</span>
-          </div>
-          <div class="comp-value">15 Oct 2030</div>
-          <p class="comp-meta">Satisfactory (5-year cycle)</p>
-        </article>
-
-      </div>
     </section>
+</main>
 
-  </main>
+<script>
+    function navigateToProperty(id) {
+        if (!id) return;
+        window.location.href = '/compliance?property_id=' + id;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('propSearch');
+        const statusTabs = document.querySelectorAll('.status-tab');
+        const propertyItems = document.querySelectorAll('.property-item');
+        const compCards = document.querySelectorAll('.comp-card');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const val = e.target.value.toLowerCase();
+                propertyItems.forEach(item => {
+                    const name = item.dataset.name.toLowerCase();
+                    item.classList.toggle('hidden', !name.includes(val));
+                });
+            });
+        }
+
+        statusTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                statusTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                
+                compCards.forEach(card => {
+                if (filter === 'ALL') {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.toggle('hidden', card.dataset.status !== filter);
+                }
+            });
+            });
+        });
+
+        const debugRecs = document.getElementById('debugRecs');
+        if (debugRecs) {
+            debugRecs.innerText = `RECORDS_DISPLAYED: ${compCards.length}`;
+        }
+    });
+</script>
 </body>
 </html>

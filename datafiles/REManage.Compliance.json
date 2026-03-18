@@ -1,25 +1,7 @@
 [
   {
-    "compliance_id": "c_111",
-    "property_id": "prop_001",
-    "type": "Electrical Safety Inspection",
-    "status": "VALID",
-    "issue_date": "2023-03-01",
-    "expiry_date": "2028-03-01",
-    "notes": "5-year cycle compliant."
-  },
-  {
-    "compliance_id": "c_112",
-    "property_id": "prop_002",
-    "type": "Gas Safety Certificate",
-    "status": "VALID",
-    "issue_date": "2025-02-10",
-    "expiry_date": "2026-02-10",
-    "notes": "Recently renewed."
-  },
-  {
+    "_id": "prop_003",
     "compliance_id": "c_113",
-    "property_id": "prop_003",
     "type": "Smoke/Fire Alarm Compliancy",
     "status": "WARNING",
     "issue_date": "2016-06-01",
@@ -27,17 +9,8 @@
     "notes": "End-of-life approaching."
   },
   {
-    "compliance_id": "c_114",
-    "property_id": "prop_004",
-    "type": "EPC",
-    "status": "VALID",
-    "issue_date": "2020-09-01",
-    "expiry_date": "2030-09-01",
-    "notes": "Within 10-year validity."
-  },
-  {
+    "_id": "prop_005",
     "compliance_id": "c_115",
-    "property_id": "prop_005",
     "type": "Carbon Monoxide Detector",
     "status": "VALID",
     "issue_date": "2023-01-01",
@@ -45,12 +18,30 @@
     "notes": "Within manufacturer lifespan."
   },
   {
-    "compliance_id": "c_116",
-    "property_id": "prop_002",
-    "type": "Legionella Risk Assessment",
+    "_id": "prop_001",
+    "compliance_id": "c_111",
+    "type": "Electrical Safety Inspection",
     "status": "VALID",
-    "issue_date": "2025-01-01",
-    "expiry_date": "2027-01-01",
-    "notes": "2-year cycle compliant."
+    "issue_date": "2023-03-01",
+    "expiry_date": "2028-03-01",
+    "notes": "5-year cycle compliant."
+  },
+  {
+    "_id": "prop_004",
+    "compliance_id": "c_114",
+    "type": "EPC",
+    "status": "CRITICAL",
+    "issue_date": "2010-09-01",
+    "expiry_date": "2020-09-01",
+    "notes": "Not in 10-year validity."
+  },
+  {
+    "_id": "prop_002",
+    "compliance_id": "c_112",
+    "type": "Gas Safety Certificate",
+    "status": "VALID",
+    "issue_date": "2025-02-10",
+    "expiry_date": "2026-02-10",
+    "notes": "Recently renewed."
   }
 ]

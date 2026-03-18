@@ -31,21 +31,39 @@ app.get('/', async function(req, res) {
         tenants: tenants
     });
 });
-app.get('/compliance', async function(req, res){
- 
-        const [properties, tenants] = await Promise.all([
-        db.collection('Properties').find({}).toArray(),
-        db.collection('Tenants').find({}).toArray()
-    ]);
-    res.render('compliancy-dashboard', {
-        properties: properties,
-        tenants: tenants
-    });
-});
 
+app.get('/compliance', async (req, res) => {
+    try {
+        const selectedPropertyId = req.query.property_id || null;
+        const allProperties = await db.collection('Properties').find({}).toArray();
+        const allCompliance = await db.collection('Compliency').find({}).toArray();
+        const tenants = await db.collection('Tenants').find({}).toArray();
+        const propertiesWithCompliance = allProperties.map(property => {
+            const pID = String(property._id);
+            const complianceRecord = allCompliance.find(c => String(c._id) === pID);
+            
+            return {
+                ...property,
+                property_id: pID,
+                compliance_records: complianceRecord ? [complianceRecord] : []
+            };
+        });
+        const selectedPropertyData = propertiesWithCompliance.find(p => p.property_id === selectedPropertyId);
+
+        res.render('compliancy-dashboard', {
+            properties: propertiesWithCompliance,
+            tenants: tenants,
+            selectedProperty: selectedPropertyId,
+            selectedPropertyData: selectedPropertyData || null
+        });
+
+    } catch (err) {
+        console.error('Route Error:', err);
+        res.status(500).send("Error loading dashboard");
+    }
+});
 app.get('/faults', async function(req, res){
- 
-        const [properties, tenants] = await Promise.all([
+    const [properties, tenants] = await Promise.all([
         db.collection('Properties').find({}).toArray(),
         db.collection('Tenants').find({}).toArray()
     ]);
