@@ -24,17 +24,33 @@
 },
 {
   "_id": "fault_4",
-  "fault": "Microwave died",
+  "fault": "Shower low pressure",
   "location": "prop_004",
   "resident_id": "ten_04",
+  "date": "20 Jan 2026",
+  "fault_level": "NON-CRITICAL"
+},
+{
+  "_id": "fault_5",
+  "fault": "Damaged flooring",
+  "location": "prop_005",
+  "resident_id": "ten_05",
+  "date": "21 Jan 2026",
+  "fault_level": "NON-CRITICAL"
+},
+{
+  "_id": "fault_6",
+  "fault": "Microwave died",
+  "location": "prop_006",
+  "resident_id": "ten_06",
   "date": "25 Dec 2025",
   "fault_level": "LOW"
 },
 {
-  "_id": "fault_5",
+  "_id": "fault_7",
   "fault": "Creaking floor",
-  "location": "prop_005",
-  "resident_id": "ten_05",
+  "location": "prop_007",
+  "resident_id": "ten_07",
   "date": "20 Dec 2025",
   "fault_level": "LOW"
 }]
