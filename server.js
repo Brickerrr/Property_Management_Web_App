@@ -1,23 +1,25 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://morgan:123@ac-xdq5idg-shard-00-00.iotpjl4.mongodb.net:27017,ac-xdq5idg-shard-00-01.iotpjl4.mongodb.net:27017,ac-xdq5idg-shard-00-02.iotpjl4.mongodb.net:27017/?ssl=true&replicaSet=atlas-z9qjfc-shard-0&authSource=admin&appName=PropertyManagement';
-const client = new MongoClient(url);
 const dbname = 'SigmaProperty';
 const express = require('express');
 const app = express();
 
+const client = new MongoClient(url);
+let db;
+
 app.use(express.static('public'));
 
-connectDB();
+
 
 async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
     db = client.db(dbname);
-    app.listen(3000, function() {
-        console.log('listening on *:3000');
+    app.listen(3510, function() {
+        console.log('listening on *:3510');
     });
 }
-
+connectDB();
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 

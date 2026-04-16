@@ -5,7 +5,102 @@
     <title>REManage — Compliance Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
-   
+    <style>
+        /* --- NEW HMRC & CONTRACT STYLES --- */
+        :root {
+            --hmrc-blue: #005abb;
+            --contract-gold: #c5a059;
+        }
+
+        .hmrc-oversight-panel {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(0, 90, 187, 0.12) 0%, rgba(20, 20, 20, 0.4) 100%);
+            border: 1px solid rgba(0, 90, 187, 0.3);
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--hmrc-blue);
+        }
+
+        .hmrc-panel-header {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .hmrc-tag {
+            font-family: 'DM Mono';
+            font-size: 10px;
+            color: var(--hmrc-blue);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .doc-btn--contract {
+            border-color: var(--contract-gold) !important;
+            color: var(--contract-gold) !important;
+        }
+
+        .doc-btn--contract:hover {
+            background: rgba(197, 160, 89, 0.15) !important;
+        }
+
+        /* --- ORIGINAL STYLES --- */
+        .comp-doc-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .doc-btn {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: #fff;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 12px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            white-space: nowrap;
+        }
+
+        .doc-btn:hover {
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.35);
+        }
+
+        .doc-btn--guidance {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(255,255,255,0.09);
+            color: rgba(255,255,255,0.55);
+        }
+
+        .risk-critical .doc-btn--legislation {
+            border-color: rgba(255, 80, 80, 0.45);
+            color: #ff9090;
+        }
+
+        .risk-warning .doc-btn--legislation {
+            border-color: rgba(255, 180, 50, 0.45);
+            color: #ffd080;
+        }
+
+        .doc-reg-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            opacity: 0.28;
+            letter-spacing: 0.04em;
+            display: block;
+        }
+        
+        .hidden { display: none !important; }
+    </style>
 </head>
 <body class="compliance-mode">
 <nav class="topbar">
@@ -74,27 +169,59 @@
         </header>
 
         <div class="ai-content comp-grid">
-            <% if (selectedPropertyData && selectedPropertyData.compliance_records && selectedPropertyData.compliance_records.length > 0) { %>
-                <% selectedPropertyData.compliance_records.forEach(item => { %>
-                   <article class="comp-card <%= item.status === 'CRITICAL' ? 'risk-critical' : item.status === 'WARNING' ? 'risk-warning' : 'risk-secure' %>" data-status="<%= item.status %>">
-                    <div class="comp-header">
-                        <span class="comp-label"><%= item.type %></span>
-                        <span class="comp-status-badge"><%= item.status %></span>
+            <% if (selectedPropertyData) { %>
+                
+                <section class="hmrc-oversight-panel">
+                    <div class="hmrc-panel-header">
+                        <div>
+                                <div class="hmrc-tag">HMRC Regulation</div>
+                            <h2 style="font-family: 'Syne'; margin: 5px 0;">AML & Tax Compliance Verified</h2>
+                        </div>
+                        <span class="comp-status-badge" style="background: rgba(0,255,170,0.1); color: #00ffaa; border: 1px solid #00ffaa;">VALID</span>
                     </div>
-                    <div class="comp-value">EXPIRY: <%= item.expiry_date %></div>
-                    <p class="comp-meta"><%= item.notes || 'No log entry provided.' %></p>
-                    <div class="comp-footer" style="font-size:10px; opacity:0.3; margin-top:15px; font-family: 'DM Mono';">
-                        CID: <%= item.compliance_id %> | ISSUE: <%= item.issue_date %>
+                    
+                    <div style="display: flex; gap: 30px; margin-bottom: 15px;">
+                        <div>
+                            <small class="doc-reg-label">AML EXPIRES</small>
+                            <div style="font-family: 'DM Mono'; font-size: 13px;">14 APR 2027</div>
+                        </div>
+                        <div>
+                            <small class="doc-reg-label">NRL STATUS</small>
+                            <div style="font-family: 'DM Mono'; font-size: 13px;">DOMESTIC_VERIFIED</div>
+                        </div>
                     </div>
-                </article>
-                <% }) %>
+
+                    <div class="comp-doc-row" style="border-top: 1px solid rgba(0,90,187,0.2);">
+                        <button class="doc-btn doc-btn--legislation" onclick="window.open('https://www.gov.uk/guidance/money-laundering-regulations-introduction')">↗ HMRC LEGISLATION</button>
+                        <button class="doc-btn doc-btn--contract" onclick="alert('Opening HMRC Compliance Contract...')">📁 COMPLIANCE CONTRACT</button>
+                    </div>
+                </section>
+
+                <% if (selectedPropertyData.compliance_records && selectedPropertyData.compliance_records.length > 0) { %>
+                    <% selectedPropertyData.compliance_records.forEach(item => { %>
+                       <article class="comp-card <%= item.status === 'CRITICAL' ? 'risk-critical' : item.status === 'WARNING' ? 'risk-warning' : 'risk-secure' %>" data-status="<%= item.status %>" data-type="<%= item.type %>">
+                        <div class="comp-header">
+                            <span class="comp-label"><%= item.type %></span>
+                            <span class="comp-status-badge"><%= item.status %></span>
+                        </div>
+                        <div class="comp-value">EXPIRY: <%= item.expiry_date %></div>
+                        <p class="comp-meta"><%= item.notes || 'No log entry provided.' %></p>
+                        
+                        <div class="comp-doc-row">
+                            <button class="doc-btn doc-btn--legislation" data-type="<%= item.type %>" data-url="<%= item.doc_url || '' %>" onclick="openRegDoc(this)">↗ LEGISLATION</button>
+                            <button class="doc-btn doc-btn--contract" onclick="alert('Opening Item Contract...')">📁 CONTRACT</button>
+                        </div>
+
+                        <div class="comp-footer" style="font-size:10px; opacity:0.3; margin-top:15px; font-family: 'DM Mono';">
+                            CID: <%= item.compliance_id %> | ISSUE: <%= item.issue_date %>
+                        </div>
+                    </article>
+                    <% }) %>
+                <% } %>
             <% } else { %>
                 <div class="empty-state">
                     <div class="empty-icon">⚠️</div>
                     <p>// NO_COMPLIANCE_DATA_FOUND</p>
-                    <% if (!selectedProperty) { %>
-                        <small>Please select a property from the index to view audit records.</small>
-                    <% } %>
                 </div>
             <% } %>
         </div>
@@ -102,8 +229,31 @@
 </main>
 
 <script>
+    const REG_DOC_MAP = {
+        'gas safety': { label: 'HSE — Gas Safety', url: 'https://www.hse.gov.uk/gas/domestic/landlords.htm' },
+        'eicr': { label: 'Gov.uk — Electrical Safety', url: 'https://www.gov.uk/government/publications/electrical-safety-standards-in-the-private-rented-sector' },
+        'epc': { label: 'Gov.uk — Energy Performance', url: 'https://www.gov.uk/buy-sell-your-home/energy-performance-certificates' },
+        'fire': { label: 'Gov.uk — Fire Safety', url: 'https://www.gov.uk/government/publications/fire-safety-risk-assessment-sleeping-accommodation' },
+        'hmo': { label: 'Gov.uk — HMO Licensing', url: 'https://www.gov.uk/houses-in-multiple-occupation-licence' }
+    };
+
+    function resolveRegDoc(type, overrideUrl) {
+        if (overrideUrl) return { label: 'Custom document', url: overrideUrl };
+        const key = Object.keys(REG_DOC_MAP).find(k => type.toLowerCase().includes(k));
+        return key ? REG_DOC_MAP[key] : null;
+    }
+
+    function openRegDoc(btn) {
+        const url = btn.dataset.url || '';
+        const type = btn.dataset.type || '';
+        if (url) { window.open(url, '_blank'); } 
+        else {
+            const doc = resolveRegDoc(type, '');
+            window.open(doc ? doc.url : 'https://www.gov.uk/search/all?keywords=' + encodeURIComponent(type), '_blank');
+        }
+    }
+
     function navigateToProperty(id) {
-        if (!id) return;
         window.location.href = '/compliance?property_id=' + id;
     }
 
@@ -117,8 +267,7 @@
             searchInput.addEventListener('input', (e) => {
                 const val = e.target.value.toLowerCase();
                 propertyItems.forEach(item => {
-                    const name = item.dataset.name.toLowerCase();
-                    item.classList.toggle('hidden', !name.includes(val));
+                    item.classList.toggle('hidden', !item.dataset.name.toLowerCase().includes(val));
                 });
             });
         }
@@ -127,23 +276,12 @@
             tab.addEventListener('click', () => {
                 statusTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                
                 const filter = tab.dataset.filter;
-                
                 compCards.forEach(card => {
-                if (filter === 'ALL') {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.toggle('hidden', card.dataset.status !== filter);
-                }
-            });
+                    card.classList.toggle('hidden', filter !== 'ALL' && card.dataset.status !== filter);
+                });
             });
         });
-
-        const debugRecs = document.getElementById('debugRecs');
-        if (debugRecs) {
-            debugRecs.innerText = `RECORDS_DISPLAYED: ${compCards.length}`;
-        }
     });
 </script>
 </body>

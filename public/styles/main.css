@@ -1060,3 +1060,62 @@
 .risk-critical { --current-risk: var(--red); }
 .risk-warning  { --current-risk: var(--accent); }
 .risk-secure   { --current-risk: var(--accent2); }
+/* HMRC Identity Colors */
+:root {
+    --hmrc-blue: #005abb;
+    --hmrc-light: #1d70b8;
+}
+
+/* Header Compliance Shield */
+.hmrc-shield {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+    padding: 4px 12px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0, 90, 187, 0.05);
+    border-radius: 4px;
+}
+
+.shield-icon {
+    font-size: 14px;
+    filter: drop-shadow(0 0 5px var(--hmrc-blue));
+}
+
+.shield-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.shield-label {
+    font-size: 8px;
+    font-family: 'DM Mono', monospace;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+}
+
+.shield-value {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--hmrc-light);
+    font-family: 'Syne', sans-serif;
+}
+
+/* Specialized Card for HMRC Records */
+.comp-card[data-type*="HMRC"], 
+.comp-card[data-type*="AML"],
+.comp-card[data-type*="NRL"] {
+    border-left: 2px solid var(--hmrc-blue);
+    background: linear-gradient(145deg, rgba(0, 90, 187, 0.08) 0%, rgba(15, 15, 15, 0) 100%);
+}
+
+.doc-btn--hmrc {
+    border-color: rgba(0, 90, 187, 0.4) !important;
+    color: #80bfff !important;
+}
+
+.doc-btn--hmrc:hover {
+    background: rgba(0, 90, 187, 0.2) !important;
+    border-color: var(--hmrc-light) !important;
+}
