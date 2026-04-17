@@ -1,0 +1,314 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maintenance Management | REMANAGE</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Assign trusted crews, let tenants report issues directly, and track every job from request to resolution.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-mark"><i class="fas fa-building-columns"></i></div>
+      <span>REMANAGE</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#product">Product</a></li>
+      <li><a href="index.html#solutions">Solutions</a></li>
+      <li><a href="index.html#resources">Resources</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="nav-signin">Sign in</a>
+      <a href="#" class="btn-blue">Start 3 month free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== FEATURE HERO ========== -->
+<section class="feature-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <i class="fas fa-chevron-right" style="font-size:10px"></i>
+      <span>Maintenance</span>
+    </div>
+    <h1>Maintenance that<br>runs itself.</h1>
+    <p>Assign trusted crews, let tenants report issues directly, and track every job from request to resolution.</p>
+    <a href="#" class="btn-blue btn-lg">Start 3 month free trial <i class="fas fa-arrow-right"></i></a>
+  </div>
+</section>
+
+<!-- ========== CREW ASSIGNMENT ========== -->
+<section class="feature-split" style="background:var(--bg-white)">
+  <div class="container split-inner">
+    <div class="split-img">
+      <div class="split-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80" alt="Property building" class="split-photo">
+        <div class="split-chip split-chip-top-right">
+          <div class="crew-header"><i class="fas fa-user"></i> Maintenance crew assigned</div>
+          <div class="crew-member"><div class="cm-avatar" style="background:#3b6ff6">MJ</div><div><div class="cm-name">Mike Johnson</div><div class="cm-role">Plumbing</div></div></div>
+          <div class="crew-member"><div class="cm-avatar" style="background:#22c55e">SC</div><div><div class="cm-name">Sarah Chen</div><div class="cm-role">Electrical</div></div></div>
+          <div class="crew-member"><div class="cm-avatar" style="background:#f59e0b">TW</div><div><div class="cm-name">Tom Wilson</div><div class="cm-role">HVAC</div></div></div>
+          <div class="crew-member"><div class="cm-avatar" style="background:#ef4444">LP</div><div><div class="cm-name">Laura Park</div><div class="cm-role">General</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="split-text">
+      <h2>The right crew, every time.</h2>
+      <p>Assign maintenance teams per building or per trade — plumbing, electrical, HVAC. When a request comes in, the right person is notified automatically.</p>
+      <ul class="split-checks">
+        <li><i class="fas fa-check"></i> Assign crews by building or trade</li>
+        <li><i class="fas fa-check"></i> Automatic notifications on new requests</li>
+        <li><i class="fas fa-check"></i> Crew availability calendar</li>
+        <li><i class="fas fa-check"></i> Performance tracking per contractor</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TENANT REPORTING ========== -->
+<section class="feature-split feature-split--reverse" style="background:var(--bg)">
+  <div class="container split-inner">
+    <div class="split-text">
+      <h2>Tenants report. You stay informed.</h2>
+      <p>Tenants submit requests through a simple portal — add descriptions, upload photos, and select urgency. No more phone tag or lost emails.</p>
+      <ul class="split-checks">
+        <li><i class="fas fa-check"></i> Tenant self-service portal</li>
+        <li><i class="fas fa-check"></i> Photo and video uploads</li>
+        <li><i class="fas fa-check"></i> Urgency tagging (low / medium / high / emergency)</li>
+        <li><i class="fas fa-check"></i> Automatic acknowledgement emails</li>
+      </ul>
+      <div class="maint-request-card">
+        <div class="mrc-icon"><i class="fas fa-wrench"></i></div>
+        <div class="mrc-body">
+          <div class="mrc-title">Leaky faucet in Unit 2B <span class="badge-new">New</span></div>
+          <div class="mrc-sub">Reported by tenant 2 hours ago</div>
+          <div class="mrc-meta"><i class="fas fa-camera"></i> 2 photos &nbsp;<i class="fas fa-bell"></i> Mike notified</div>
+        </div>
+      </div>
+      <div class="maint-request-card">
+        <div class="mrc-icon" style="background:#fee2e2;color:#ef4444"><i class="fas fa-bolt"></i></div>
+        <div class="mrc-body">
+          <div class="mrc-title">Power outage in Unit 5A <span class="badge-new" style="background:#fee2e2;color:#ef4444">Urgent</span></div>
+          <div class="mrc-sub">Reported by tenant 30 minutes ago</div>
+          <div class="mrc-meta"><i class="fas fa-camera"></i> 1 photo &nbsp;<i class="fas fa-bell"></i> Sarah notified</div>
+        </div>
+      </div>
+    </div>
+    <div class="split-img">
+      <div class="split-photo-wrap">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=900&q=80" alt="Tenant reporting" class="split-photo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATUS TRACKING ========== -->
+<section class="feature-split" style="background:var(--bg-white)">
+  <div class="container split-inner">
+    <div class="split-img">
+      <div class="compliance-panel">
+        <div class="compliance-panel-header">
+          <i class="fas fa-list-check"></i>
+          <span>Job Pipeline</span>
+        </div>
+        <div class="compliance-checklist">
+          <div class="compliance-item">
+            <div class="compliance-item-icon pass"><i class="fas fa-check"></i></div>
+            <div class="compliance-item-body">
+              <div class="compliance-item-title">Reported</div>
+              <div class="compliance-item-sub">Tenant submitted request with photos</div>
+            </div>
+            <span class="compliance-tag pass">Done</span>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-item-icon pass"><i class="fas fa-check"></i></div>
+            <div class="compliance-item-body">
+              <div class="compliance-item-title">Assigned</div>
+              <div class="compliance-item-sub">Mike Johnson notified automatically</div>
+            </div>
+            <span class="compliance-tag pass">Done</span>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-item-icon warn"><i class="fas fa-wrench"></i></div>
+            <div class="compliance-item-body">
+              <div class="compliance-item-title">In Progress</div>
+              <div class="compliance-item-sub">Crew on-site since 2:30 PM</div>
+            </div>
+            <span class="compliance-tag warn">Active</span>
+          </div>
+          <div class="compliance-item">
+            <div class="compliance-item-body">
+              <div class="compliance-item-title" style="color:var(--text-muted)">Completed</div>
+              <div class="compliance-item-sub">Awaiting sign-off</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="split-text">
+      <h2>From reported to resolved, tracked.</h2>
+      <p>Every job moves through clear stages: reported, assigned, in-progress, completed. Tenants and managers get automatic status updates at each step.</p>
+      <ul class="split-checks">
+        <li><i class="fas fa-check"></i> Four-stage job pipeline</li>
+        <li><i class="fas fa-check"></i> Automatic tenant notifications at each stage</li>
+        <li><i class="fas fa-check"></i> Completion sign-off with photos</li>
+        <li><i class="fas fa-check"></i> Full maintenance history per unit</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to take control of your portfolio?</h2>
+      <p>Join thousands of property companies already using REMANAGE. Start your 3 month free trial — no credit card required.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-blue btn-lg">Start 3 month free trial <i class="fas fa-arrow-right"></i></a>
+        <a href="#" class="btn-outline-blue">Book a demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo footer-logo">
+          <div class="logo-mark"><i class="fas fa-building-columns"></i></div>
+          <span>REMANAGE</span>
+        </div>
+        <p>The all-in-one property management platform for modern property companies.</p>
+        <div class="footer-socials">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="listings.html">Listings</a></li>
+          <li><a href="market-research.html">Market Research</a></li>
+          <li><a href="maintenance.html">Maintenance</a></li>
+          <li><a href="compliance.html">Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 REMANAGE. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== PRICING MODAL ========== -->
+<div class="pricing-overlay" id="pricing-overlay">
+  <div class="pricing-modal">
+    <button class="pricing-close" id="pricing-close" aria-label="Close"><i class="fas fa-xmark"></i></button>
+    <div class="pricing-modal-hd">
+      <h2>Choose your plan</h2>
+      <p>Start with a 3 month free trial. No credit card required.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card-tag">Starter</div>
+        <div class="pricing-card-price">£50<span>/mo</span></div>
+        <div class="pricing-card-units">Up to 10 units</div>
+        <ul class="pricing-card-features">
+          <li><i class="fas fa-check"></i> Full platform access</li>
+          <li><i class="fas fa-check"></i> Tenant &amp; lease management</li>
+          <li><i class="fas fa-check"></i> Compliance engine</li>
+          <li><i class="fas fa-check"></i> Maintenance tracking</li>
+          <li><i class="fas fa-check"></i> Market research tools</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+        </ul>
+        <a href="#" class="btn-blue pricing-card-btn">Start 3 month free trial</a>
+      </div>
+      <div class="pricing-card pricing-card--popular">
+        <div class="pricing-popular-badge">Most popular</div>
+        <div class="pricing-card-tag">Pro</div>
+        <div class="pricing-card-price">£125<span>/mo</span></div>
+        <div class="pricing-card-units">Up to 30 units</div>
+        <ul class="pricing-card-features">
+          <li><i class="fas fa-check"></i> Full platform access</li>
+          <li><i class="fas fa-check"></i> Tenant &amp; lease management</li>
+          <li><i class="fas fa-check"></i> Compliance engine</li>
+          <li><i class="fas fa-check"></i> Maintenance tracking</li>
+          <li><i class="fas fa-check"></i> Market research tools</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+        </ul>
+        <a href="#" class="btn-blue pricing-card-btn">Start 3 month free trial</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card-tag">Per Unit</div>
+        <div class="pricing-card-price">£10<span>/unit/mo</span></div>
+        <div class="pricing-card-units">Pay for what you use</div>
+        <ul class="pricing-card-features">
+          <li><i class="fas fa-check"></i> Full platform access</li>
+          <li><i class="fas fa-check"></i> Tenant &amp; lease management</li>
+          <li><i class="fas fa-check"></i> Compliance engine</li>
+          <li><i class="fas fa-check"></i> Maintenance tracking</li>
+          <li><i class="fas fa-check"></i> Market research tools</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+        </ul>
+        <a href="#" class="btn-blue pricing-card-btn">Start 3 month free trial</a>
+      </div>
+      <div class="pricing-card pricing-card--dark">
+        <div class="pricing-card-tag">Enterprise</div>
+        <div class="pricing-card-price">Custom</div>
+        <div class="pricing-card-units">Tailored to your niche &amp; portfolio size</div>
+        <ul class="pricing-card-features">
+          <li><i class="fas fa-check"></i> Custom-built dashboard</li>
+          <li><i class="fas fa-check"></i> Designed around your niche</li>
+          <li><i class="fas fa-check"></i> Bespoke feature set</li>
+          <li><i class="fas fa-check"></i> Dedicated account manager</li>
+          <li><i class="fas fa-check"></i> Custom integrations</li>
+          <li><i class="fas fa-check"></i> SLA &amp; onboarding</li>
+        </ul>
+        <a href="#" class="btn-outline-blue pricing-card-btn">Contact sales</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
